@@ -3,6 +3,10 @@
   padding-bottom: 80px;
 }
 
+.container {
+  display: grid;
+}
+
 @media (max-width: 600px) {
   .page {
     padding: 32px;
