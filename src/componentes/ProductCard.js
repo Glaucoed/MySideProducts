@@ -1,5 +1,5 @@
-import Image from "next/image"
-import styles from "@/styles/productCard.module.css"
+import Image from "next/image";
+import styles from "@/styles/productCard.module.css";
 
 export default function ProductCard({ product }) {
   return (
@@ -7,17 +7,22 @@ export default function ProductCard({ product }) {
       <div>
         <Image
           src={product.image}
-          alt={product.name}
+          alt={product.title}
           width={300}
           height={300}
         />
       </div>
       <div>
         <h2>{product.title}</h2>
-        <p>${product.price.toFixed(2)}</p>
+        <p>
+          {new Intl.NumberFormat("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+            minimumFractionDigits: 2,
+          }).format(product.price)}
+        </p>
         <p>{product.description}</p>
       </div>
     </div>
-  )
+  );
 }
-
