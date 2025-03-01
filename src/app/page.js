@@ -1,13 +1,24 @@
 "use client";
 import styles from "@/styles/page.module.css";
-import { useProducts } from "@/hooks/useProducts";
 import ProductCard from "@/componentes/ProductCard";
 import Input from "@/componentes/Input";
+import Checkbox from "@/componentes/Checkbox";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useQuery } from "@tanstack/react-query";
+import { fetchProducts } from "@/services/fetchProducts";
 
 export default function Home() {
-  const { data, isLoading } = useProducts();
   const [filteredProducts, setFilteredProducts] = useState("");
+  const [categories, _setCategories] = useState(["audio","gaming","mobile","tv"]);
+
+  const { register, watch, setValue } = useForm();
+  const categoryName = watch("categories");
+
+  const { data, isLoading } = useQuery({
+    queryKey: ["products", categoryName],
+    queryFn: () => fetchProducts(categoryName),
+  });
 
   return (
     <div className={styles.page}>
@@ -18,20 +29,28 @@ export default function Home() {
         type="text"
         handleOnChange={(e) => setFilteredProducts(e.target.value)}
       />
+
+      {categories.map((category) => (
+        <Checkbox
+          key={category}
+          name="categories"
+          title={category}
+          register={register}
+          setValue={setValue}
+          value={category}
+        />
+      ))}
+
       <div className={styles.container}>
-        {isLoading ? (
-          <span className={styles.loader}></span>
-        ) : (
-          data
-            .filter((product) =>
-              filteredProducts
-                ? product.title.toLowerCase().includes(filteredProducts)
-                : product
-            )
-            .map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))
-        )}
+        { isLoading ? (
+            <span className={styles.loader} />
+          ) : (
+            data.length > 0 &&
+            data
+              .filter((product) => filteredProducts.length > 0 ? product.title.toLowerCase().includes(filteredProducts) : product)
+              .map((product) => ( <ProductCard key={product.id} product={product} />))
+          )
+        }
       </div>
     </div>
   );
