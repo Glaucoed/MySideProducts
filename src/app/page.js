@@ -10,7 +10,12 @@ import { fetchProducts } from "@/services/fetchProducts";
 
 export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState("");
-  const [categories, _setCategories] = useState(["audio","gaming","mobile","tv"]);
+  const [categories, _setCategories] = useState([
+    "audio",
+    "gaming",
+    "mobile",
+    "tv",
+  ]);
 
   const { register, watch, setValue } = useForm();
   const categoryName = watch("categories");
@@ -22,35 +27,45 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
-      <Input
-        placeholder="Digite o nome do produto"
-        name="search"
-        title="Buscar produto"
-        type="text"
-        handleOnChange={(e) => setFilteredProducts(e.target.value)}
-      />
-
-      {categories.map((category) => (
-        <Checkbox
-          key={category}
-          name="categories"
-          title={category}
-          register={register}
-          setValue={setValue}
-          value={category}
+      <div className={styles.filters}>
+        <Input
+          placeholder="Digite o nome do produto"
+          name="search"
+          title="Filtro de produto"
+          type="text"
+          handleOnChange={(e) => setFilteredProducts(e.target.value)}
         />
-      ))}
 
-      <div className={styles.container}>
-        { isLoading ? (
-            <span className={styles.loader} />
-          ) : (
-            data.length > 0 &&
-            data
-              .filter((product) => filteredProducts.length > 0 ? product.title.toLowerCase().includes(filteredProducts) : product)
-              .map((product) => ( <ProductCard key={product.id} product={product} />))
-          )
-        }
+          <h2 className={styles.title}>Categorias</h2>
+        <div className={styles.categories}>
+          {categories.map((category) => (
+            <Checkbox
+              key={category}
+              name="categories"
+              title={category}
+              register={register}
+              setValue={setValue}
+              value={category}
+            />
+          ))}
+        </div>
+      </div>
+
+      <div className={styles.containerProducts}>
+        {isLoading ? (
+          <span className={styles.loader} />
+        ) : (
+          data.length > 0 &&
+          data
+            .filter((product) =>
+              filteredProducts.length > 0
+                ? product.title.toLowerCase().includes(filteredProducts)
+                : product
+            )
+            .map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+        )}
       </div>
     </div>
   );

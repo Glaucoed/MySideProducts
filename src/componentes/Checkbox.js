@@ -1,11 +1,11 @@
 import React from "react";
-import styles from "@/styles/input.module.css";
+import styles from "@/styles/checkbox.module.css";
 
 export default function Checkbox({ name, title, register, value, setValue }) {
   return (
-    <div className={styles.container}>
       <label className={styles.label} htmlFor={name}>
         <input
+          className={styles.input}
           type="checkbox"
           id={name}
           {...register(`${name}`)}
@@ -17,6 +17,5 @@ export default function Checkbox({ name, title, register, value, setValue }) {
         />
         {title}
       </label>
-    </div>
   );
 }

@@ -1,16 +1,12 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/services/Provider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const InterSans = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "MySideProducts",
@@ -21,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
       <Providers>
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <body className={`${InterSans.variable}`}>
           {children}
         </body>
       </Providers>

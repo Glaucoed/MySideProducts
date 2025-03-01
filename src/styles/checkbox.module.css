@@ -1,0 +1,35 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  gap: 8px;
+  
+}
+
+.input {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  appearance: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.input:checked {
+  background-color: #fb414d;
+}
+
+.label {
+  display: flex;
+  gap: 5px;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #333;
+}

@@ -3,8 +3,8 @@ import styles from "@/styles/productCard.module.css";
 
 export default function ProductCard({ product }) {
   return (
-    <div>
-      <div>
+    <div className={styles.productCard}>
+      <div className={styles.image}>
         <Image
           src={product.image}
           alt={product.title}
@@ -12,16 +12,16 @@ export default function ProductCard({ product }) {
           height={300}
         />
       </div>
-      <div>
-        <h2>{product.title}</h2>
-        <p>
+      <div className={styles.info}>
+        <h2 className={styles.title}>{product.title}</h2>
+        <p className={styles.price}>
           {new Intl.NumberFormat("pt-BR", {
             style: "currency",
             currency: "BRL",
             minimumFractionDigits: 2,
           }).format(product.price)}
         </p>
-        <p>{product.description}</p>
+        <p className={styles.description}>{product.description}</p>
       </div>
     </div>
   );
