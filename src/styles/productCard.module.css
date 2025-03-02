@@ -7,6 +7,17 @@
   border-radius: 0.5rem;
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  cursor: pointer;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.productCard:hover {
+  -moz-transform: scale(1.04);
+  -webkit-transform: scale(1.04);
+  transform: scale(1.04);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 4px 14px;
 }
 
 .image{

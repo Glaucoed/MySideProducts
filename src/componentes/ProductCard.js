@@ -1,9 +1,13 @@
 import Image from "next/image";
 import styles from "@/styles/productCard.module.css";
+import { useRouter } from 'next/navigation'
 
 export default function ProductCard({ product }) {
+
+  const router = useRouter()
+
   return (
-    <div className={styles.productCard}>
+    <div className={styles.productCard} onClick={() => router.push(`/products/${product.id}`)}>
       <div className={styles.image}>
         <Image
           src={product.image}

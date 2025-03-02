@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "@/services/fetchProducts";
+import Loading from "@/componentes/Loading";
 
 export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState("");
@@ -53,7 +54,7 @@ export default function Home() {
 
       <div className={styles.containerProducts}>
         {isLoading ? (
-          <span className={styles.loader} />
+          <Loading />
         ) : (
           data.length > 0 &&
           data
