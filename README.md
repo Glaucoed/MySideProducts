@@ -44,17 +44,30 @@ npm start
 yarn start
 ```
 
+## Como rodar os testes
+
+Para iniciar o test, execute:
+```sh
+npm run test
+# ou
+yarn test
+```
+
+
 ## Tecnologias Utilizadas
 - [Next.js](https://nextjs.org/)
 - [TanStack React Query](https://tanstack.com/query/latest)
 - [Axios](https://axios-http.com/)
 - [React Hook Form](https://react-hook-form.com/)
 - [React Icons](https://react-icons.github.io/react-icons/)
+- [Jest](https://jestjs.io/pt-BR/)
+- [React Testing Library ](https://testing-library.com)
 
 ## Scripts Disponíveis
 - `dev`: Inicia o servidor de desenvolvimento com Turbopack
 - `build`: Cria um build otimizado para produção
 - `start`: Inicia o servidor Next.js para produção
+- `test`: Inicia os testes
 
 
 
