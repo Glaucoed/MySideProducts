@@ -7,7 +7,7 @@ export default function ProductCard({ product }) {
   const router = useRouter()
 
   return (
-    <div className={styles.productCard} onClick={() => router.push(`/products/${product.id}`)}>
+    <div className={styles.productCard} data-testid="product-item" onClick={() => router.push(`/products/${product.id}`)}>
       <div className={styles.image}>
         <Image
           src={product.image}
