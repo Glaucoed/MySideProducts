@@ -37,20 +37,32 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
+.category{
+  border: solid 1px #f3f1f1;
+  width: fit-content;
+  padding: 1px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
 .info {
   display: flex;
   flex-direction: column;
   gap: 25px;
 }
 
-.info p:nth-child(3){
+.description{
   color: #71717A;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
-.info p:nth-child(2){
+.price{
   font-size: 1.8rem;
   font-weight: 700;
+}
+
+.info span {
+  border: solid 0.5px #f3f1f1;
 }
 
 .buttons{ 
@@ -86,12 +98,8 @@
     width: 100%;
     height: auto;
   }
-
-  .info p:nth-child(2){
-    font-size: 1.5rem;
-  }
-
-  .info p:nth-child(3){
+  
+  .info p:nth-child(5){
     font-size: 1rem;
   }
 
@@ -100,9 +108,5 @@
     gap: 10px;
   }
 
-  .buttons button{
-    padding: 10px 20px;
-    font-size: 1rem;
-  }
   
 }
